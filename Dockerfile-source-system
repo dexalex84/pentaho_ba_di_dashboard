@@ -1,0 +1,5 @@
+FROM centos:latest
+RUN yum update -y && yum install wget java-1.8.0-openjdk -y
+ADD distr/app_source_system /opt/curr_rates_loader
+WORKDIR /opt/curr_rates_loader
+

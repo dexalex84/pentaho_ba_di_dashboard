@@ -1,0 +1,59 @@
+  version: "3"
+  services: 
+    app_pentaho_ba: 
+      build: .
+      tty: true
+      container_name: app_pentaho_ba
+      ports:
+        - "8080:8080"
+      depends_on:
+        - db_repo
+      image: app_pentaho_ba 
+
+    db_repo:
+      restart: always
+      image: postgres:latest
+      container_name: db_repo
+      ports:
+        - "5432"
+      environment:
+        - DEBUG=false
+
+    db_dwh:
+      restart: always
+      image: postgres:latest
+      container_name: db_dwh
+      ports:
+        - "5432:5432"
+      environment:
+        - DEBUG=false
+
+    db_source_system:
+      restart: always
+      image: postgres:latest
+      container_name: db_source_system
+      ports:
+        - "5442:5432"
+      environment:
+        - DEBUG=false
+
+    app_pentaho_di:
+      build: 
+        context: .
+        dockerfile: Dockerfile-di
+      container_name: app_pentaho_di
+      ports:
+        - "5050"
+      tty: true
+      image: app_pentaho_di
+
+    app_source_system:
+      build:
+        context: .
+        dockerfile: Dockerfile-source-system
+      container_name: app_source_system
+      tty: true
+      image: app_source_system
+
+  
+ 
