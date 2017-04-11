@@ -33,20 +33,36 @@
  echo 
 
  echo copy DB creating scripts to db_dwh START
- docker cp ./init/db_source_system/* db_dwh:/tmp
- echo create DWH SYSTEM DB
- docker-compose exec  db_source_system psql -h localhost -U postgres -f "/tmp/create_source_db.sql"
+ echo create DWH DB
+ docker cp ./init/db_dwh/create_tables.sql db_dwh:/tmp 
+ docker cp ./init/db_dwh/create_database.sql db_dwh:/tmp
+
+ docker-compose exec  db_dwh psql -h localhost -U postgres -f "/tmp/create_database.sql"
+ docker-compose exec  db_dwh psql -h localhost -U postgres -d warehouse -f "/tmp/create_tables.sql"
  echo END
  echo 
 
  echo ===============================================================================	
- echo now you can start Pentaho BA server by command:
+ echo Pentaho BA: 
+ echo ===========================
+ echo Start server by command:
  echo docker-compose exec app_pentaho_ba /opt/pentaho/pentaho-server/start-pentaho.sh
  echo 
- echo you can start source server app by command:
+ echo Source System App:
+ echo ===========================
+ echo Start source server app by command:
  echo docker-compose exec -d -T app_source_system /opt/curr_rates_loader/start.sh
  echo 
  echo and stop by commmand:
  echo docker-compose exec -d -T app_source_system /opt/curr_rates_loader/stop.sh
+ echo 
+ echo Pentaho Kettle Integration:
+ echo ===========================
+ echo start Pentaho Kettle Integration job by command:
+ echo docker-compose exec -T app_pentaho_di /opt/pentaho/app/start.sh
+ echo 
+ echo and stop by command
+ echo docker-compose exec -T app_pentaho_di /opt/pentaho/app/stop.sh
+
 
 
