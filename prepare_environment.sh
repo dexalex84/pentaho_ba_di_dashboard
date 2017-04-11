@@ -41,22 +41,14 @@
  docker-compose exec  db_dwh psql -h localhost -U postgres -d warehouse -f "/tmp/create_tables.sql"
  echo END
 
- echo copy Pentaho BA Dashboards to server
- docker cp init/app_pentaho_ba/dashboards/ app_pentaho_ba:/tmp/
-
- docker-compose exec app_pentaho_ba  ./import-export.sh --import --url=http://app_pentaho_ba:8080/pentaho --username=admin --password=password --charset=UTF-8 --path=/public --file-path=/tmp/dashboards/Currencies.cda.zip --overwrite=true --permission=true --retainOwnership=true
-
- docker-compose exec app_pentaho_ba  ./import-export.sh --import --url=http://app_pentaho_ba:8080/pentaho --username=admin --password=password --charset=UTF-8 --path=/public --file-path=/tmp/dashboards/Currencies.cdfde.zip --overwrite=true --permission=true --retainOwnership=true
-
- docker-compose exec app_pentaho_ba  ./import-export.sh --import --url=http://app_pentaho_ba:8080/pentaho --username=admin --password=password --charset=UTF-8 --path=/public --file-path=/tmp/dashboards/Currencies.wcdf.zip --overwrite=true --permission=true --retainOwnership=true
-
  echo 
 
  echo ===============================================================================	
  echo Pentaho BA: 
  echo ===========================
  echo Start server by command:
- echo docker-compose exec -T app_pentaho_ba /opt/pentaho/pentaho-server/start-pentaho.sh
+ echo docker-compose exec -T app_pentaho_ba /opt/pentaho/pentaho-server/start-pentaho-debug.sh (or with out T, or with out -debug)
+ echo Wait untill see row "INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]" in catalina.out LOGS
  echo 
  echo View Pentaho BA / Tomcat logs
  echo docker-compose exec app_pentaho_ba tail -f tomcat/logs/catalina.out
@@ -83,6 +75,8 @@
  echo View kettle log
  echo docker-compose exec app_pentaho_di tail -f ../app/kettle.log
  echo 
+ esho copy Dashboards to server
+ echo ./import_dashboard.sh
  echo ===============================================================================
 
 
