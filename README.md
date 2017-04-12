@@ -19,7 +19,7 @@
  1) clone repo to local folder, change directory to this folder 
  2) run ```docker-compose up -d``` to create docker images and start containers
  3) run ```prepare_environment.sh``` to init services. 
- 4) Start Pentaho BA ```docker-compose exec -T app_pentaho_ba /opt/pentaho/pentaho-server/start-pentaho-debug.sh``` (or with out T, or with out -debug).
+ 4) Start Pentaho BA ```docker-compose exec -T app_pentaho_ba /opt/pentaho/pentaho-server/start-pentaho-debug.sh``` (or without ```T```, or with out ```-debug``` - sometimes BA does not want to start on the first time).
     This need some time from 5 to 10 minutes
     See tomcat logs via ```docker-compose exec app_pentaho_ba tail -f tomcat/logs/catalina.out```
     Wait until you see a row ```INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]``` in catalina.out
