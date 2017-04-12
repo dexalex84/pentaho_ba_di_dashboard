@@ -1,6 +1,6 @@
-#Pentaho BA on Docker
+# Pentaho example with full stack enterprise services Dashboards, ETL, DWH, SourceDB on Docker
  
-Pentaho BA on full stack 
+
 Source DB
 Source APP
 Pentaho DI
