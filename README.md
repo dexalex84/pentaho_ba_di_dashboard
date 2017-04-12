@@ -14,7 +14,7 @@
  1) clone repo to local folder, change directory to this folder 
  2) run ```docker-compose up -d``` to create docekr images and start containers
  3) run ```prepare_environment.sh``` to init services. 
- 4) Start Pentaho BA run ```docker-compose exec -T app_pentaho_ba /opt/pentaho/pentaho-server/start-pentaho-debug.sh``` (or with out T, or with out -debug).
+ 4) Start Pentaho BA ```docker-compose exec -T app_pentaho_ba /opt/pentaho/pentaho-server/start-pentaho-debug.sh``` (or with out T, or with out -debug).
     This need some time from 5 to 10 minutes
     See tomcat logs via ```docker-compose exec app_pentaho_ba tail -f tomcat/logs/catalina.out```
     Wait untill see a row ```INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]``` in catalina.out
@@ -27,8 +27,11 @@
  - https://github.com/dexalex84/pentaho_7_0_ba_pg_files
  - https://github.com/dexalex84/get-currency-rates
  - https://github.com/dexalex84/pentaho-simple-dwh-job
- - https://github.com/dexalex84/pentaho_7_0_ba_pg_files
-
+ - http://redmine.webdetails.org/projects/5/wiki/FAQ_Main_Changes_New_Features_CCC_v2
+ - http://community.pentaho.com/ctools/ccc/#type=line&anchor=time-series-line
+ - https://docs.docker.com/
+ - http://phantomjs.org/api/command-line.html
+ 
  ## Troubleshoot
  1) use notices at the end of ```prepare_environment.sh```!
  2) see logs:
