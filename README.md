@@ -40,6 +40,6 @@
     ```echo docker-compose exec app_source_system  tail -f web_parse.log```
   - View kettle log
     ```echo docker-compose exec app_pentaho_di tail -f ../app/kettle.log```
-    
+ 3) PostgreSQL user and login: ```postgres```
  
  
