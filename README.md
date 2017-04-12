@@ -12,15 +12,15 @@
 ## Instruction
  
  1) clone repo to local folder, go to this folder 
- 2) run '''docker-compose up -d''' to create dockr images and start containers
- 3) run '''prepare_environment.sh''' to init services. 
- 4) Start Pentaho BA run '''docker-compose exec -T app_pentaho_ba /opt/pentaho/pentaho-server/start-pentaho-debug.sh''' (or with out T, or with out -debug).
-    That need some time 
-    See tomcat logs via '''docker-compose exec app_pentaho_ba tail -f tomcat/logs/catalina.out'''
-    Wait untill see a row "INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]" in catalina.out
- 5) Start source system app '''docker-compose exec -d -T app_source_system /opt/curr_rates_loader/start.sh'''
- 6) Start Kettle intagration packages '''docker-compose exec -T app_pentaho_di /opt/pentaho/app/start.sh'''
- 7) Import dash boards to Pentaho BA '''./import_dashboard.sh''' 
+ 2) run ```docker-compose up -d``` to create dockr images and start containers
+ 3) run ```prepare_environment.sh``` to init services. 
+ 4) Start Pentaho BA run ```docker-compose exec -T app_pentaho_ba /opt/pentaho/pentaho-server/start-pentaho-debug.sh``` (or with out T, or with out -debug).
+    This need some time from 5 to 10 minutes
+    See tomcat logs via ```docker-compose exec app_pentaho_ba tail -f tomcat/logs/catalina.out```
+    Wait untill see a row ```INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]``` in catalina.out
+ 5) Start source system app ```docker-compose exec -d -T app_source_system /opt/curr_rates_loader/start.sh```
+ 6) Start Kettle intagration packages ```docker-compose exec -T app_pentaho_di /opt/pentaho/app/start.sh```
+ 7) Import dash boards to Pentaho BA ```./import_dashboard.sh```
  
  ## Related docs and projects
  
