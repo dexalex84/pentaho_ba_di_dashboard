@@ -1,6 +1,6 @@
-# Pentaho example with full stack enterprise services Dashboards, ETL, DWH, SourceDB, SourceApp on Docker
-## What's happanning
- After install process is done we have simple entertrise dataflow:
+# Pentaho example of full stack enterprise services Dashboards, ETL, DWH, SourceDB, SourceApp on Docker
+## What's happening
+ After installation process is done we have simple enterprise dataflow:
  1) One system (Source System) collecting forex exchange currency rates data from WEB via app ```app_source_system``` to own database ```db_source_system```
  2) That data transfers to ```db_dwh``` via Kettle Job inside ```app_pentaho_di```
  3) After that we can watch 'realtime' (5-7 second delay) changing currencies on Line Chart on ```app_pentaho_ba``` dashboard
@@ -17,12 +17,12 @@
 ## Instruction
  
  1) clone repo to local folder, change directory to this folder 
- 2) run ```docker-compose up -d``` to create docekr images and start containers
+ 2) run ```docker-compose up -d``` to create docker images and start containers
  3) run ```prepare_environment.sh``` to init services. 
  4) Start Pentaho BA ```docker-compose exec -T app_pentaho_ba /opt/pentaho/pentaho-server/start-pentaho-debug.sh``` (or with out T, or with out -debug).
     This need some time from 5 to 10 minutes
     See tomcat logs via ```docker-compose exec app_pentaho_ba tail -f tomcat/logs/catalina.out```
-    Wait untill see a row ```INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]``` in catalina.out
+    Wait until see a row ```INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]``` in catalina.out
  5) Start source system app ```docker-compose exec -d -T app_source_system /opt/curr_rates_loader/start.sh```
  6) Start Kettle integration packages ```docker-compose exec -T app_pentaho_di /opt/pentaho/app/start.sh```
  7) Import dashboards to Pentaho BA ```./import_dashboard.sh```
