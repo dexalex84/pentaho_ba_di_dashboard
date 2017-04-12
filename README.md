@@ -30,8 +30,7 @@
  - http://redmine.webdetails.org/projects/5/wiki/FAQ_Main_Changes_New_Features_CCC_v2
  - http://community.pentaho.com/ctools/ccc/#type=line&anchor=time-series-line
  - https://docs.docker.com/
- - http://phantomjs.org/api/command-line.html
- 
+  
  ## Troubleshoot
  1) use notices at the end of ```prepare_environment.sh```!
  2) see logs:
