@@ -1,4 +1,9 @@
 # Pentaho example with full stack enterprise services Dashboards, ETL, DWH, SourceDB, SourceApp on Docker
+## What's happanning
+ After install process is done we have simple entertrise dataflow:
+ 1) One system (Source System) collecting forex exchange currency rates data from WEB via app ```app_source_system``` to own database ```db_source_system```
+ 2) That data transfers to ```db_dwh``` via Kettle Job inside ```app_pentaho_di```
+ 3) After that we can watch 'realtime' (5-7 second delay) changing currencies on Line Chart on ```app_pentaho_ba``` dashboard
  
 ## Services
 
