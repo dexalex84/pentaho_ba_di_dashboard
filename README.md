@@ -22,7 +22,7 @@
  4) Start Pentaho BA ```docker-compose exec -T app_pentaho_ba /opt/pentaho/pentaho-server/start-pentaho-debug.sh``` (or with out T, or with out -debug).
     This need some time from 5 to 10 minutes
     See tomcat logs via ```docker-compose exec app_pentaho_ba tail -f tomcat/logs/catalina.out```
-    Wait until see a row ```INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]``` in catalina.out
+    Wait until seeing a row ```INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]``` in catalina.out
  5) Start source system app ```docker-compose exec -d -T app_source_system /opt/curr_rates_loader/start.sh```
  6) Start Kettle integration packages ```docker-compose exec -T app_pentaho_di /opt/pentaho/app/start.sh```
  7) Import dashboards to Pentaho BA ```./import_dashboard.sh```
