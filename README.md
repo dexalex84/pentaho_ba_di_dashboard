@@ -1,6 +1,6 @@
 # Pentaho example with full stack enterprise services Dashboards, ETL, DWH, SourceDB, SourceApp on Docker
  
-## Services:
+## Services
 
  1) app_pentaho_ba - installed Pentaho BA. Access to console via URL http://[ip_of_docker_host]:8080/pentaho/Home
  2) db_repo - PostgreSQL server with Pentaho BA system repos
